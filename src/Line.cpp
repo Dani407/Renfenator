@@ -37,6 +37,11 @@ Stop Line::getStop(unsigned int i)
     return stops[i];
 }
 
+std::vector<Stop> Line::getStops()
+{
+    return stops;
+}
+
 Stop* Line::find(string name)
 {
     vector<Stop>::iterator i;

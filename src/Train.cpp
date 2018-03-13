@@ -6,7 +6,7 @@ Train::Train()
     speed = 0;
 }
 
-Train::Train(Line line, int currentStop, float speed)
+Train::Train(Line line, unsigned int currentStop, float speed)
 {
     this->currentStop = currentStop;
     this->speed = speed;
@@ -28,9 +28,9 @@ void Train::go(float desiredSpeed, std::string stopName)
     speed = desiredSpeed;
     std::cout << "Starting from stop: " << currentStop << '\n';
     for (size_t i = currentStop; i < line.find(stopName)->getStopNumber(); i++) {
-        sleep(stops[i].distanceToNext/speed)
-        std::cout << "We've arrived to: " << stops[i+1].name << '\n';
-        sleep(10));
+        sleep(line.getStops()[i].getDistanceToNext()/speed);
+        std::cout << "We've arrived to: " << line.getStops()[i+1].getName() << '\n';
+        sleep(10);
     }
 }
 

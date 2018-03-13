@@ -7,12 +7,12 @@
 
 class Train
 {
-    int currentStop;
+    unsigned int currentStop;
     float speed;
     Line line;
 public:
     Train();
-    Train(Line line, int currentStop = 0, float speed = 0);
+    Train(Line line, unsigned int currentStop = 0, float speed = 0);
     float getSpeed();
     int getCurrentStop();
     void go(float desiredSpeed, std::string stopName);

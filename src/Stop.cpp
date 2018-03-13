@@ -2,9 +2,13 @@
 
 Stop::Stop(){}
 
-Stop::Stop(string n, int distance) : name(n), distanceToNext(distance){}
+Stop::Stop(string n, int distance, unsigned int stopNumber)
+    :
+    name(n),
+    distanceToNext(distance),
+    stopNumber(stopNumber) {}
 
-int Stop::getStopNumber()
+unsigned int Stop::getStopNumber()
 {
     return stopNumber;
 }

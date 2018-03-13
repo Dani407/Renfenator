@@ -14,6 +14,7 @@ public:
     void init();
     void addStop(Stop stop);
     Stop getStop(unsigned int i);
+    std::vector<Stop> getStops();
     Stop* find(string name);
 };
 
