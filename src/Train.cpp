@@ -6,7 +6,7 @@ Train::Train()
     speed = 0;
 }
 
-Train::Train(int currentStop, float speed, Line line)
+Train::Train(Line line, int currentStop, float speed)
 {
     this->currentStop = currentStop;
     this->speed = speed;

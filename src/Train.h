@@ -11,7 +11,7 @@ class Train
     Line line;
 public:
     Train();
-    Train(int currentStop, float speed, Line line);
+    Train(Line line, int currentStop = 0, float speed = 0);
     float getSpeed();
     int getCurrentStop();
     void go(float desiredSpeed);
