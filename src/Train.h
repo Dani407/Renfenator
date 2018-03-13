@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Line.h"
+#include <unistd.h>
 
 class Train
 {
@@ -14,7 +15,7 @@ public:
     Train(Line line, int currentStop = 0, float speed = 0);
     float getSpeed();
     int getCurrentStop();
-    void go(float desiredSpeed);
+    void go(float desiredSpeed, std::string stopName);
     void stop();
     void setLine(Line l);
 };

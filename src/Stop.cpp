@@ -4,6 +4,10 @@ Stop::Stop(){}
 
 Stop::Stop(string n, int distance) : name(n), distanceToNext(distance){}
 
+int Stop::getStopNumber()
+{
+    return stopNumber;
+}
 
 string Stop::getName()
 {
