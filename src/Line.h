@@ -11,6 +11,7 @@ class Line
 public:
     Line();
     Line(string id);
+    void init();
     void addStop(Stop stop);
     Stop getStop(unsigned int i);
     Stop* find(string name);
