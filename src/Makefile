@@ -1,6 +1,5 @@
 CC = g++
 CFLAGS =  -Wall -c -std=c++11
-# LIBS =
 TARGET = main
 
 $(TARGET): $(TARGET).o Line.o Stop.o Train.o
