@@ -1,5 +1,8 @@
 #include "Stop.h"
 
+Stop::Stop(string n, int distance) : name(n), distanceToNext(distance){}
+
+
 string Stop::getName()
 {
     return name;
