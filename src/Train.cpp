@@ -4,7 +4,6 @@ Train::Train()
 {
     currentStop = 0;
     speed = 0;
-    std::cout << "Soy un  Tren! Chuuuu Chuuu!!" << '\n';
 }
 
 Train::Train(int currentStop, float speed, Line line)
