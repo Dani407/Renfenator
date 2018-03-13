@@ -10,6 +10,7 @@ class Stop
     string name;
     int distanceToNext;
 public:
+    Stop();
     Stop(string n, int distance);
     string getName();
     void setName(string n);
