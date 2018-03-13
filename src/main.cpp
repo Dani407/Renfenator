@@ -2,5 +2,5 @@
 
 int main() {
     Train train1;
-    train1.go(20);
+    // train1.go(20);
 }

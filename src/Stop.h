@@ -7,13 +7,13 @@ using namespace std;
 
 class Stop
 {
-    unsigned int stopNumber;
     string name;
     int distanceToNext;
+    unsigned int stopNumber;
 public:
     Stop();
-    Stop(string n, int distance);
-    int getStopNumber();
+    Stop(string n, int distance, unsigned int stopNumber);
+    unsigned int getStopNumber();
     string getName();
     void setName(string n);
     int getDistanceToNext();
