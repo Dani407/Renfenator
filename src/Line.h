@@ -16,6 +16,7 @@ public:
     Stop getStop(unsigned int i);
     std::vector<Stop> getStops();
     Stop* find(string name);
+    unsigned int findIndex(string name);
 };
 
 #endif
