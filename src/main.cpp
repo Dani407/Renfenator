@@ -11,4 +11,6 @@ int main() {
     C3.addStop(Stop("f", 10, 5));
     C3.addStop(Stop("g", 10, 6));
     C3.addStop(Stop("h", 10, 7));
+    std::cout << train1.getCurrentStop() << '\n';
+    train1.go(1, "b");
 }

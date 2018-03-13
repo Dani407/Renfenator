@@ -27,7 +27,7 @@ void Train::go(float desiredSpeed, std::string stopName)
 {
     speed = desiredSpeed;
     std::cout << "Starting from stop: " << currentStop << '\n';
-    for (size_t i = currentStop; i < line.find(stopName)->getStopNumber(); i++) {
+    for (size_t i = currentStop; i <= line.findIndex(stopName); i++) {
         sleep(line.getStops()[i].getDistanceToNext()/speed);
         std::cout << "We've arrived to: " << line.getStops()[i+1].getName() << '\n';
         sleep(10);
