@@ -1,5 +1,7 @@
 #include "Line.h"
 
+Line::Line(){}
+
 Line::Line(string id) : id(id){}
 
 void Line::addStop(Stop stop)
@@ -7,8 +9,11 @@ void Line::addStop(Stop stop)
     stops.push_back(stop);
 }
 
-Stop Line::getStop(int i)
+Stop Line::getStop(unsigned int i)
 {
+    if (i >= stops.size()) {
+        throw "FUERA DE RANGO";
+    }
     return stops[i];
 }
 

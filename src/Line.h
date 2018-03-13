@@ -9,9 +9,10 @@ class Line
     string id;
     vector<Stop> stops;
 public:
+    Line();
     Line(string id);
     void addStop(Stop stop);
-    Stop getStop(int i);
+    Stop getStop(unsigned int i);
     Stop* find(string name);
 };
 
