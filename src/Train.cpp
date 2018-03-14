@@ -23,16 +23,28 @@ int Train::getCurrentStop()
     return currentStop;
 }
 
-void Train::go(float desiredSpeed, std::string stopName)
+void Train::go(float desiredSpeed, std::string stopName, string character)
 {
     speed = desiredSpeed;
     float timeToStay = 5;
-    std::cout << "Starting from stop: " << currentStop << '\n';
+    std::cout << "Starting from stop: " << line.getStops()[currentStop].getName() << '\n';
     for (size_t i = currentStop; i < line.findIndex(stopName); i++) {
-        sleep(line.getStops()[i].getDistanceToNext()/speed);
+        for (size_t j = 0; j < line.getStops()[i].getDistanceToNext()/speed; j++) {
+            sleep(1);
+            std::cout << character << '\n';
+        }
         std::cout << "We've arrived to: " << line.getStops()[i+1].getName() << '\n';
         std::cout << "We stay here, " << timeToStay << " seconds" << '\n';
-        sleep(timeToStay);
+        for (size_t k = 0; k < timeToStay; k++) {
+            sleep(1);
+            std::cout << character;
+        }
+        std::cout << '\n';
+        if (i == (line.findIndex(stopName)-1)) {
+            std::cout << "End of journey" << '\n';
+        } else {
+        std::cout << "Next stop: " << line.getStops()[i+2].getName() << '\n';
+        }
     }
 }
 

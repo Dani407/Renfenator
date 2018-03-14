@@ -1,9 +1,10 @@
 CC = g++
 CFLAGS =  -Wall -c -std=c++11
+LIBS = -lpthread
 TARGET = main
 
 $(TARGET): $(TARGET).o Line.o Stop.o Train.o
-	$(CC) -Wall $(TARGET).o Line.o Stop.o Train.o -o $(TARGET)
+	$(CC) -Wall $(TARGET).o Line.o Stop.o Train.o -o $(TARGET) $(LIBS)
 
 $(TARGET).o: $(TARGET).cpp
 	$(CC) $(CFLAGS) $(TARGET).cpp

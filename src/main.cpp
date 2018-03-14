@@ -1,8 +1,9 @@
 #include "Train.h"
+#include <thread>
 
-// void start(Train t){
-//     t.go();
-// }
+void start(Train t, float desiredSpeed, std::string stopName, std::string character){
+    t.go(desiredSpeed, stopName, character);
+}
 
 int main() {
     Line C3("C3");
@@ -15,14 +16,11 @@ int main() {
     C3.addStop(Stop("g", 10, 6));
     C3.addStop(Stop("h", 10, 7));
     Train train1(C3);
-    std::cout << train1.getCurrentStop() << '\n';
-    train1.go(2, "b");
+    Train train2(C3,3);
 
     ///////////// APLICACION DE HILOS ////////////////
-    // Train t1;
-    // std::thread threadTrain1(start, t1);
-    // Train t2;
-    // std::thread threadTrain2(start, t2);
-    // threadTrain1.join();
-    // threadTrain2.join();
+    std::thread threadTrain1(start, train1, 2, "c", ".");
+    std::thread threadTrain2(start, train2, 3, "g", "=");
+    threadTrain1.join();
+    threadTrain2.join();
 }
