@@ -38,10 +38,10 @@ unsigned int Line::findIndex(string name)
     vector<Stop>::iterator i;
     unsigned int count = 0;
     for (i = stops.begin(); i < stops.end(); i++) {
-        count++;
         if (i->getName() == name){
             return count;
         }
+        count++;
     }
     return 0;
 }

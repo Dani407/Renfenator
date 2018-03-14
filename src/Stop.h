@@ -1,6 +1,7 @@
 #ifndef STOP_H_
 #define STOP_H_
 
+#include <iostream>
 #include <string>
 
 using namespace std;
