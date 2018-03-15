@@ -1,8 +1,8 @@
 #include "Train.h"
 #include <thread>
 
-void start(Train* t, float desiredSpeed, std::string stopName, std::string character){
-    t->go(desiredSpeed, stopName, character);
+void start(Train* t, float desiredSpeed, std::string stopName, std::string tabulator){
+    t->go(desiredSpeed, stopName, tabulator);
 }
 
 int main() {
@@ -19,8 +19,8 @@ int main() {
     Train* train2 = new Train("T2",C3);
 
     ///////////// APLICACION DE HILOS ////////////////
-    std::thread threadTrain1(start, train1, 2, "d", ".");
-    std::thread threadTrain2(start, train2, 4, "e", "                                   =");
+    std::thread threadTrain1(start, train1, 2, "d", "");
+    std::thread threadTrain2(start, train2, 4, "e", "                           ");
     threadTrain1.join();
     threadTrain2.join();
 }

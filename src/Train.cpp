@@ -31,7 +31,7 @@ void Train::go(float desiredSpeed, std::string stopName, string character)
     for (; currentStop < line->findIndex(stopName); currentStop++) {
         for (size_t j = 0; j < line->getStops()[currentStop]->getDistanceToNext()/speed; j++) {
             sleep(1);
-            std::cout << character + '\n';
+            std::cout << character + "." + '\n';
         }
         stay(character);
         if (currentStop == (line->findIndex(stopName)-1)) {
@@ -59,9 +59,6 @@ void Train::stay(std::string character)
 
     lock_guard<mutex> guard(line->getStops()[currentStop]->m);
     std::cout << character << name + " stays here, 5 seconds" + '\n';
-    for (size_t k = 0; k < timeToStay; k++) {
-        sleep(1);
-        std::cout << character;
-    }
+    sleep(timeToStay);
     std::cout << '\n';
 }
