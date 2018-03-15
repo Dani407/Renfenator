@@ -20,7 +20,7 @@ int main() {
 
     ///////////// APLICACION DE HILOS ////////////////
     std::thread threadTrain1(start, train1, 2, "d", ".");
-    std::thread threadTrain2(start, train2, 4, "e", "=");
+    std::thread threadTrain2(start, train2, 4, "e", "                                   =");
     threadTrain1.join();
     threadTrain2.join();
 }

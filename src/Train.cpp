@@ -27,20 +27,17 @@ int Train::getCurrentStop()
 void Train::go(float desiredSpeed, std::string stopName, string character)
 {
     speed = desiredSpeed;
-    std::cout << name + " starting from stop: " + line->getStops()[currentStop]->getName() + '\n';
-    for (size_t i = currentStop; i < line->findIndex(stopName); i++) {
-        std::cout << name + " esperando " + line->getStops()[i]->getName() + '\n';
-        lock_guard<mutex> guard(line->getStops()[i]->m);
-        for (size_t j = 0; j < line->getStops()[i]->getDistanceToNext()/speed; j++) {
+    std::cout << character << name + " starting from stop: " + line->getStops()[currentStop]->getName() + '\n';
+    for (; currentStop < line->findIndex(stopName); currentStop++) {
+        for (size_t j = 0; j < line->getStops()[currentStop]->getDistanceToNext()/speed; j++) {
             sleep(1);
             std::cout << character + '\n';
         }
-        std::cout << name + " arrived to: " + line->getStops()[i+1]->getName() + '\n';
         stay(character);
-        if (i == (line->findIndex(stopName)-1)) {
-            std::cout << name + " end of journey" + '\n';
+        if (currentStop == (line->findIndex(stopName)-1)) {
+            std::cout << character << name + " end of journey" + '\n';
         } else {
-        std::cout << name + " next stop: " + line->getStops()[i+2]->getName() + '\n';
+        std::cout << character << name + " next stop: " + line->getStops()[currentStop+2]->getName() + '\n';
         }
     }
 }
@@ -58,7 +55,10 @@ void Train::setLine(Line* l)
 void Train::stay(std::string character)
 {
     float timeToStay = 5;
-    std::cout << name + " stays here, 5 seconds" + '\n';
+    std::cout << character << name + " arrived to: " + line->getStops()[currentStop+1]->getName() + '\n';
+
+    lock_guard<mutex> guard(line->getStops()[currentStop]->m);
+    std::cout << character << name + " stays here, 5 seconds" + '\n';
     for (size_t k = 0; k < timeToStay; k++) {
         sleep(1);
         std::cout << character;
