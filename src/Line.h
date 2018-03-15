@@ -7,7 +7,7 @@
 class Line
 {
     string id;
-    vector<Stop> stops;
+    vector<Stop*> stops;
 public:
     Line();
     Line(string id);
