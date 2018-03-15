@@ -4,12 +4,12 @@ Line::Line(){}
 
 Line::Line(string id) : id(id){}
 
-void Line::addStop(Stop stop)
+void Line::addStop(Stop* stop)
 {
     stops.push_back(stop);
 }
 
-Stop Line::getStop(unsigned int i)
+Stop* Line::getStop(unsigned int i)
 {
     if (i >= stops.size()) {
         throw "FUERA DE RANGO";
@@ -17,17 +17,17 @@ Stop Line::getStop(unsigned int i)
     return stops[i];
 }
 
-std::vector<Stop> Line::getStops()
+std::vector<Stop*> Line::getStops()
 {
     return stops;
 }
 
 Stop* Line::find(string name)
 {
-    vector<Stop>::iterator i;
-    for (i = stops.begin(); i < stops.end(); i++) {
-        if (i->getName() == name){
-            return &(*i);
+    // vector<Stop*>::iterator i;
+    for (unsigned int i = 0/*stops.begin()*/; i < stops.size(); i++) {
+        if (stops[i]->getName() == name){
+            return stops[i];
         }
     }
     return NULL;
@@ -35,10 +35,10 @@ Stop* Line::find(string name)
 
 unsigned int Line::findIndex(string name)
 {
-    vector<Stop>::iterator i;
+    //vector<Stop*>::iterator i;
     unsigned int count = 0;
-    for (i = stops.begin(); i < stops.end(); i++) {
-        if (i->getName() == name){
+    for (unsigned int i = 0; i < stops.size(); i++) {
+        if (stops[i]->getName() == name){
             return count;
         }
         count++;

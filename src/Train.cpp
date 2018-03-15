@@ -6,8 +6,9 @@ Train::Train()
     speed = 0;
 }
 
-Train::Train(Line line, unsigned int currentStop, float speed)
+Train::Train(std::string name, Line* line, unsigned int currentStop, float speed)
 {
+    this->name = name;
     this->currentStop = currentStop;
     this->speed = speed;
     this->line = line;
@@ -26,18 +27,20 @@ int Train::getCurrentStop()
 void Train::go(float desiredSpeed, std::string stopName, string character)
 {
     speed = desiredSpeed;
-    std::cout << "Starting from stop: " << line.getStops()[currentStop].getName() << '\n';
-    for (size_t i = currentStop; i < line.findIndex(stopName); i++) {
-        for (size_t j = 0; j < line.getStops()[i].getDistanceToNext()/speed; j++) {
+    std::cout << name + " starting from stop: " + line->getStops()[currentStop]->getName() + '\n';
+    for (size_t i = currentStop; i < line->findIndex(stopName); i++) {
+        std::cout << name + " esperando " + line->getStops()[i]->getName() + '\n';
+        lock_guard<mutex> guard(line->getStops()[i]->m);
+        for (size_t j = 0; j < line->getStops()[i]->getDistanceToNext()/speed; j++) {
             sleep(1);
-            std::cout << character << '\n';
+            std::cout << character + '\n';
         }
-        std::cout << "We've arrived to: " << line.getStops()[i+1].getName() << '\n';
+        std::cout << name + " arrived to: " + line->getStops()[i+1]->getName() + '\n';
         stay(character);
-        if (i == (line.findIndex(stopName)-1)) {
-            std::cout << "End of journey" << '\n';
+        if (i == (line->findIndex(stopName)-1)) {
+            std::cout << name + " end of journey" + '\n';
         } else {
-        std::cout << "Next stop: " << line.getStops()[i+2].getName() << '\n';
+        std::cout << name + " next stop: " + line->getStops()[i+2]->getName() + '\n';
         }
     }
 }
@@ -47,7 +50,7 @@ void Train::stop()
     speed = 0;
 }
 
-void Train::setLine(Line l)
+void Train::setLine(Line* l)
 {
     line = l;
 }
@@ -55,7 +58,7 @@ void Train::setLine(Line l)
 void Train::stay(std::string character)
 {
     float timeToStay = 5;
-    std::cout << "We stay here, " << timeToStay << " seconds" << '\n';
+    std::cout << name + " stays here, 5 seconds" + '\n';
     for (size_t k = 0; k < timeToStay; k++) {
         sleep(1);
         std::cout << character;

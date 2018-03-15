@@ -12,9 +12,9 @@ public:
     Line();
     Line(string id);
     void init();
-    void addStop(Stop stop);
-    Stop getStop(unsigned int i);
-    std::vector<Stop> getStops();
+    void addStop(Stop* stop);
+    Stop* getStop(unsigned int i);
+    std::vector<Stop*> getStops();
     Stop* find(string name);
     unsigned int findIndex(string name);
 };
