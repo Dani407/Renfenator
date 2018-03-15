@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "Semaphore.h"
 
 using namespace std;
 
@@ -10,11 +11,10 @@ class Stop
 {
     string name;
     int distanceToNext;
-    unsigned int stopNumber;
+    Semaphore S;
 public:
     Stop();
-    Stop(string n, int distance, unsigned int stopNumber);
-    unsigned int getStopNumber();
+    Stop(string n, int distance, unsigned int platforms);
     string getName();
     void setName(string n);
     int getDistanceToNext();

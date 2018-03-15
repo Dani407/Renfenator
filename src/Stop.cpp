@@ -2,16 +2,15 @@
 
 Stop::Stop(){}
 
-Stop::Stop(string n, int distance, unsigned int stopNumber)
+Stop::Stop(string n, int distance, unsigned int platforms)
     :
     name(n),
-    distanceToNext(distance),
-    stopNumber(stopNumber) {}
-
-unsigned int Stop::getStopNumber()
-{
-    return stopNumber;
-}
+    distanceToNext(distance)
+    {
+        for (size_t i = 0; i < platforms; i++) {
+            S.notify();
+        }
+    }
 
 string Stop::getName()
 {
