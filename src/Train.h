@@ -18,6 +18,7 @@ public:
     void go(float desiredSpeed, std::string stopName, string character);
     void stop();
     void setLine(Line l);
+    void stay(std::string character);
 };
 
 #endif
