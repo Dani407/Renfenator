@@ -9,7 +9,7 @@ class Train
 {
     unsigned int currentStop;
     float speed;
-    Line line;
+    Line* line;
 public:
     Train();
     Train(Line line, unsigned int currentStop = 0, float speed = 0);
